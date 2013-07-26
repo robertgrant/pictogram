@@ -1,6 +1,14 @@
 pictogram<-function(icon,n,grouplabels="",
                     hicons=20,vspace=0.5,labprop=0.2,labelcex=1) {
-  if(is.list(icon)) licon<-icon else licon<-list(icon)
+	if(is.list(icon)) {
+		licon<-icon 
+	} else {
+		licon<-list(icon)
+		for (i in 2:length(n)) {
+			licon[[i]]<-icon
+		}
+	}
+
 	library(reshape)
 	sumn<-sum(n)
 	group<-untable(df=matrix((1:length(n)),ncol=1),num=n)
